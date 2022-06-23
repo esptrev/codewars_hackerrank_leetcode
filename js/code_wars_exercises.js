@@ -287,48 +287,48 @@
 // }
 
 // console.log(sayHello('trevor'));
-
-const house = {
-    bedrooms: 2,
-    bathrooms: 2,
-    sqft: 1234
-}
-for (prop in house){
-    console.log(prop,house[prop]);
-}
-
-let numb = 123;
-console.log(numb.toString().split('').reverse().join(''));
-
-
-
-function countDuplicates (string){
-    const duplicates = {};
-    let splitDuplicates = string.split('');
-    console.log(splitDuplicates);
-    splitDuplicates.forEach((char) => {
-        duplicates[char] = (duplicates [char] || 0) + 1;
-    });
-    console.log(duplicates);
-}
-countDuplicates("adsjfdsfsfjsdjfhacabcsbajda")
-
-function countWords(sentence) {
-    const words = sentence.split(' '); // transform a sentence into an array of words
-    const wordCountObject = words.reduce((wordCounts, word) => {
-        if (typeof wordCounts[word] === 'undefined') {
-            // if the word is not yet present in our object, set it's value to 1
-            wordCounts[word] = 1;
-        } else {
-            // otherwise increment the existing count
-            wordCounts[word] += 1;
-        }
-        return wordCounts;
-    }, {}); // start with an empty object
-    return wordCountObject;
-}
-
-countWords('Mary had a little lamb little lamb little lamb');
+//
+// const house = {
+//     bedrooms: 2,
+//     bathrooms: 2,
+//     sqft: 1234
+// }
+// for (prop in house){
+//     console.log(prop,house[prop]);
+// }
+//
+// let numb = 123;
+// console.log(numb.toString().split('').reverse().join(''));
+//
+//
+//
+// function countDuplicates (string){
+//     const duplicates = {};
+//     let splitDuplicates = string.split('');
+//     console.log(splitDuplicates);
+//     splitDuplicates.forEach((char) => {
+//         duplicates[char] = (duplicates [char] || 0) + 1;
+//     });
+//     console.log(duplicates);
+// }
+// countDuplicates("adsjfdsfsfjsdjfhacabcsbajda")
+//
+// function countWords(sentence) {
+//     const words = sentence.split(' '); // transform a sentence into an array of words
+//     const wordCountObject = words.reduce((wordCounts, word) => {
+//         if (typeof wordCounts[word] === 'undefined') {
+//             // if the word is not yet present in our object, set it's value to 1
+//             wordCounts[word] = 1;
+//         } else {
+//             // otherwise increment the existing count
+//             wordCounts[word] += 1;
+//         }
+//         return wordCounts;
+//     }, {}); // start with an empty object
+//     return wordCountObject;
+// }
+//
+// countWords('Mary had a little lamb little lamb little lamb');
 // {Mary: 1, had: 1, a: 1, little: 3, lamb: 3}
 
 // Write a function called makePerson. It takes 2 arguments: personName and age.
@@ -342,137 +342,137 @@ countWords('Mary had a little lamb little lamb little lamb');
 // Person name cannot be blank
 // false
 
-
-/// LITTLE JS WARMUP FROM DOC ROB ///
-function makePerson (pName,pAge){
-    if(pName.length === 0){
-        console.log("Name cannot be empty");
-        return false;
-    }
-    if(pAge < 1 || pAge > 150){
-        console.log("Not a valid age")
-        return false;
-    }
-    return {pName,pAge};
-}
-
-console.log(makePerson('trevor', 45));
-
-/// Little function from LinkedIn ///  What logs first start or end ///
-setTimeout(function (){
-    console.log("start")
-},0);
-console.log("end");
-
-//// COUPLE MERGE FUNCTIONS FROM LINKEDIN ////
-
-let numArray = [12,25,65,34,98,100,1,4,8,200,222,21,77];
-function sortArray (array){
-    console.log(numArray);
-    for (let i = 0; i < array.length; i++) {
-        for (let j = 0; j < array.length; j++) {
-            if(array[j] > array[j + 1]){
-                let temp = array[j+1];
-                array[j+1] = array[j];
-                array[j] = temp;
-            }
-
-        }
-
-    }
-    return numArray;
-}
-
-console.log(sortArray(numArray));
-
-const merge = (arr1, arr2) => {
-    let sorted = [];
-
-    while (arr1.length && arr2.length) {
-        if (arr1[0] < arr2[0]) sorted.push(arr1.shift());
-        else sorted.push(arr2.shift());
-    };
-
-    return sorted.concat(arr1.slice().concat(arr2.slice()));
-};
-
-
-const mergeSort = arr => {
-    if (arr.length <= 1) return arr;
-    let mid = Math.floor(arr.length / 2),
-        left = mergeSort(arr.slice(0, mid)),
-        right = mergeSort(arr.slice(mid));
-
-    return merge(left, right);
-};
-const unsortedArr = [31, 27, 28, 42, 13, 8, 11, 30,51,52,53,54, 17, 41, 15, 43, 1, 36, 9, 16, 20, 35, 48, 37, 7, 26, 34, 21, 22, 6, 29, 32, 49, 10, 12, 19, 24, 38, 5, 14, 44, 40, 3, 50, 46, 25, 18, 33, 47, 4, 45, 39, 23, 2];
-console.log(mergeSort(unsortedArr));
-
-const greeting = "      Happy     Tuesday    !    ";
-console.log(greeting.trim());
-
-
-console.log([1,2,3,4,5].fill(0,1,3));
-
-console.log(parseFloat(7.5/10));
-
-
-console.log("trevor")
-console.log([] == ![]);
-
-console.log(typeof []);
-console.log(typeof [1]);
-
-let myArr = [];
-for (let i = 0; i < 5; i++) {
-    myArr.push(i)
-}
-console.log(myArr);
-
-let newArr = [];
-console.log(newArr)
-console.log([] == '');
-console.log([] == 0);
-
-let [a,b, ...e] = [1,2,3,4,5];
-console.log(e)
-
-const myPet = {
-    animal: "dog",
-    name: "Samwise"
-}
-//const {animal,name} = myPet;
-//console.log(`my ${animal} is named ${name}.`);
-console.log(myPet)
-
-
-let g= 1;
-let h=3;
-[g,h] = [h,g];
-console.log(g,h);
-
-const dog = new Map();
-dog.set('name','samwise');
-dog.set('breed','maltipoo');
-
-console.log(dog.get('name'));
-
-class Friend{
-    constructor(name) {
-    this.name = name;
-    this.getName = () => this.name;
-
-    }
-}
-
-const myFriend = new Friend('Trevor')
-const {getName} = myFriend;
-console.log(getName());
-
-let nums = [1,2,3,4,5,6,7,8,9];
-
-const sqOfNums = nums.map(num => num * num);
-console.log(sqOfNums)
+//
+// /// LITTLE JS WARMUP FROM DOC ROB ///
+// function makePerson (pName,pAge){
+//     if(pName.length === 0){
+//         console.log("Name cannot be empty");
+//         return false;
+//     }
+//     if(pAge < 1 || pAge > 150){
+//         console.log("Not a valid age")
+//         return false;
+//     }
+//     return {pName,pAge};
+// }
+//
+// console.log(makePerson('trevor', 45));
+//
+// /// Little function from LinkedIn ///  What logs first start or end ///
+// setTimeout(function (){
+//     console.log("start")
+// },0);
+// console.log("end");
+//
+// //// COUPLE MERGE FUNCTIONS FROM LINKEDIN ////
+//
+// let numArray = [12,25,65,34,98,100,1,4,8,200,222,21,77];
+// function sortArray (array){
+//     console.log(numArray);
+//     for (let i = 0; i < array.length; i++) {
+//         for (let j = 0; j < array.length; j++) {
+//             if(array[j] > array[j + 1]){
+//                 let temp = array[j+1];
+//                 array[j+1] = array[j];
+//                 array[j] = temp;
+//             }
+//
+//         }
+//
+//     }
+//     return numArray;
+// }
+//
+// console.log(sortArray(numArray));
+//
+// const merge = (arr1, arr2) => {
+//     let sorted = [];
+//
+//     while (arr1.length && arr2.length) {
+//         if (arr1[0] < arr2[0]) sorted.push(arr1.shift());
+//         else sorted.push(arr2.shift());
+//     };
+//
+//     return sorted.concat(arr1.slice().concat(arr2.slice()));
+// };
+//
+//
+// const mergeSort = arr => {
+//     if (arr.length <= 1) return arr;
+//     let mid = Math.floor(arr.length / 2),
+//         left = mergeSort(arr.slice(0, mid)),
+//         right = mergeSort(arr.slice(mid));
+//
+//     return merge(left, right);
+// };
+// const unsortedArr = [31, 27, 28, 42, 13, 8, 11, 30,51,52,53,54, 17, 41, 15, 43, 1, 36, 9, 16, 20, 35, 48, 37, 7, 26, 34, 21, 22, 6, 29, 32, 49, 10, 12, 19, 24, 38, 5, 14, 44, 40, 3, 50, 46, 25, 18, 33, 47, 4, 45, 39, 23, 2];
+// console.log(mergeSort(unsortedArr));
+//
+// const greeting = "      Happy     Tuesday    !    ";
+// console.log(greeting.trim());
+//
+//
+// console.log([1,2,3,4,5].fill(0,1,3));
+//
+// console.log(parseFloat(7.5/10));
+//
+//
+// console.log("trevor")
+// console.log([] == ![]);
+//
+// console.log(typeof []);
+// console.log(typeof [1]);
+//
+// let myArr = [];
+// for (let i = 0; i < 5; i++) {
+//     myArr.push(i)
+// }
+// console.log(myArr);
+//
+// let newArr = [];
+// console.log(newArr)
+// console.log([] == '');
+// console.log([] == 0);
+//
+// let [a,b, ...e] = [1,2,3,4,5];
+// console.log(e)
+//
+// const myPet = {
+//     animal: "dog",
+//     name: "Samwise"
+// }
+// //const {animal,name} = myPet;
+// //console.log(`my ${animal} is named ${name}.`);
+// console.log(myPet)
+//
+//
+// let g= 1;
+// let h=3;
+// [g,h] = [h,g];
+// console.log(g,h);
+//
+// const dog = new Map();
+// dog.set('name','samwise');
+// dog.set('breed','maltipoo');
+//
+// console.log(dog.get('name'));
+//
+// class Friend{
+//     constructor(name) {
+//     this.name = name;
+//     this.getName = () => this.name;
+//
+//     }
+// }
+//
+// const myFriend = new Friend('Trevor')
+// const {getName} = myFriend;
+// console.log(getName());
+//
+// let nums = [1,2,3,4,5,6,7,8,9];
+//
+// const sqOfNums = nums.map(num => num * num);
+// console.log(sqOfNums)
 
 
 // Write a function called removeVowels.
@@ -492,44 +492,65 @@ console.log(sqOfNums)
 // return a new string
 //be able to print results
 
+//
+// function removeVowels(originalString){
+//     let strArr = originalString.split('');
+//     for (let i = 0; i < strArr.length; i++) {
+//         let char = strArr[i].toLowerCase();
+//         if (char === 'a' || char === 'e' || char === 'i' || char === 'o' || char === 'u'){
+//             strArr[i]= '';
+//         }
+//
+//     }
+//     console.log(strArr.join(''));
+// }
+// removeVowels('happy birthday');
+//
+// function disemvowel(str) {
+//     var strArr = str.split('');
+//     for (var x = 0; x < str.length; x++) {
+//         var char = str[x].toLowerCase();
+//         if (char === "a" || char ==="e" || char === "i" || char === "o" || char === "u") {
+//             strArr[x] = '';
+//         }
+//     }
+//     return strArr.join('');
+// }
+//
+// console.log(disemvowel("happy birthday"));
+//
+// console.log(true + true);
+// console.log('true' + 'true');
+// console.log(true + 'true');
+// console.log(false + false);
+// console.log(false + 'false');
+// console.log(true + false);
+// console.log('true' + false);
 
-function removeVowels(originalString){
-    let strArr = originalString.split('');
-    for (let i = 0; i < strArr.length; i++) {
-        let char = strArr[i].toLowerCase();
-        if (char === 'a' || char === 'e' || char === 'i' || char === 'o' || char === 'u'){
-            strArr[i]= '';
-        }
 
+/* https://www.codewars.com/kata/580a4734d6df748060000045/train/javascript
+check to see if array is sorted ascending, descending or not at all
+ */
+function isSortedAndHow(array) {
+    const strungOut = array.join('');
+    console.log(strungOut);
+
+    const sorted = array.sort((a,b) => a-b).join('');
+    console.log(sorted);
+
+    const reversed = array.sort((a,b) => b-a).join('');
+    console.log(reversed);
+
+    if(strungOut === sorted){
+        return 'yes, ascending';
+    }else if(strungOut === reversed){
+        return 'yes, descending';
+    }else{
+        return 'no';
     }
-    console.log(strArr.join(''));
-}
-removeVowels('happy birthday');
-
-function disemvowel(str) {
-    var strArr = str.split('');
-    for (var x = 0; x < str.length; x++) {
-        var char = str[x].toLowerCase();
-        if (char === "a" || char ==="e" || char === "i" || char === "o" || char === "u") {
-            strArr[x] = '';
-        }
-    }
-    return strArr.join('');
 }
 
-console.log(disemvowel("happy birthday"));
-
-console.log(true + true);
-console.log('true' + 'true');
-console.log(true + 'true');
-console.log(false + false);
-console.log(false + 'false');
-console.log(true + false);
-console.log('true' + false);
-
-
-/// FROM HACKERRANK
-
+console.log("is sorted " + isSortedAndHow([9,8,7,6]));
 
 
 
