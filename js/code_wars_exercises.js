@@ -528,9 +528,8 @@ console.log(true + false);
 console.log('true' + false);
 
 
-let idArray = [1,2,3,4,5,6,7];
-for (let i = 0; i < idArray.length; i++) {
+/// FROM HACKERRANK
 
 
-}
+
 
