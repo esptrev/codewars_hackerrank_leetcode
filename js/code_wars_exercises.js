@@ -553,4 +553,30 @@ function isSortedAndHow(array) {
 console.log("is sorted " + isSortedAndHow([9,8,7,6]));
 
 
+/* CODE WARS ARRAY ARRAY ARRAY
+https://www.codewars.com/kata/57eb936de1051801d500008a/train/javascript
+ */
+
+const explode = (x) => {
+    let primary = x[0];
+    let secondary = x[1];
+    let results = 0;
+    let resultsArray = [];
+    if( !isNaN(primary) && !isNaN(secondary)){
+        results += primary + secondary;
+    }else if(!isNaN(primary) && isNaN(secondary)){
+        results += primary;
+    }else if(!isNaN(secondary) && isNaN(primary)){
+        results += secondary;
+    }else{
+        return 'Void!';
+    }
+    for (let i = 0; i < results; i++) {
+        resultsArray.push(x);
+    }
+    return resultsArray;
+}
+
+console.log(explode([2,5]));
+
 
