@@ -80,3 +80,36 @@ const roundingStudentGrades = (grade) => {
 }
 console.log(roundingStudentGrades(38));
 
+/* COUNTING SORT
+https://www.hackerrank.com/challenges/three-month-preparation-kit-countingsort1/problem?isFullScreen=true&h_l=interview&playlist_slugs%5B%5D=preparation-kits&playlist_slugs%5B%5D=three-month-preparation-kit&playlist_slugs%5B%5D=three-month-week-two
+
+RETURN ARRAY WITH THE COUNT OF THE NUMBER OF OCCURENCES OF EACH VALUE IN THE NUMBER ARRAY RETURN
+VALUES UP TO 100
+ */
+
+const countTheOccurrences = (arr) => {
+    let frequencyArray = new Array(100).fill(0);
+    for (let num of arr) {
+        frequencyArray[num]++
+    }
+    return frequencyArray;
+}
+console.log(countTheOccurrences([1,1,1,2,3,3,4,5,6]))
+
+/* PANGRAM
+https://www.hackerrank.com/challenges/three-month-preparation-kit-pangrams/problem?isFullScreen=true&h_l=interview&playlist_slugs%5B%5D=preparation-kits&playlist_slugs%5B%5D=three-month-preparation-kit&playlist_slugs%5B%5D=three-month-week-two
+DOES THE ARG STRING CONTAIN ALL LETTERS OF ENGLISH ALPHABET
+ */
+
+const isItAPangram = (string) => {
+    let lowerCase = string.toLowerCase();
+    let alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    for (let i = 0; i < alphabet.length; i++) {
+        if(lowerCase.indexOf(alphabet[i]) < 0){
+            return 'not pangram';
+        }
+    }
+    return 'pangram';
+}
+
+console.log(isItAPangram('abcdefghinopqrstuvwxyz'));
