@@ -176,14 +176,17 @@ function plusMinus(arr) {
 
 /* GIVEN A NUNBER ARRAY FIND THE MINIMUM SUM AND MAXIMUM SUM USING EXACTLY 4 OF THE INTEGERS IN THE ARRAY */
 
-function miniMaxSum (numberArray){
-    let sorted = numberArray.sort((a,b) => a-b);
-    console.log(sorted)
-     let reversed = numberArray.sort((a,b) => b-a);
-    console.log(reversed)
+function minSumMaxSum(arr){
+    const sorted = arr.sort((a,b) => a-b);
+    let lowSum = 0;
+    let highSum = 0;
     for (let i = 0; i < (sorted.length -1); i++) {
-        console.log(sorted[i]);
+        lowSum += sorted[i];
     }
+    const reversed = arr.sort((a,b) => b-a);
+    for (let i = 0; i < (reversed.length - 1); i++) {
+        highSum += reversed[i];
+    }
+    console.log(highSum + ' ' + lowSum);
 }
-
-miniMaxSum([3,2,5,1,4]);
+minSumMaxSum([3,2,5,1,4]);
