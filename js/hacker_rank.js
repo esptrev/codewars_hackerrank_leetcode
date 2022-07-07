@@ -173,20 +173,59 @@ function plusMinus(arr) {
     console.log(zeroRatio.toFixed(6));
 }
 
+// plusMinus([1,2,-1,-4,0,5,4,0])
 
 /* GIVEN A NUNBER ARRAY FIND THE MINIMUM SUM AND MAXIMUM SUM USING EXACTLY 4 OF THE INTEGERS IN THE ARRAY */
 
-function minSumMaxSum(arr){
-    const sorted = arr.sort((a,b) => a-b);
+function minSumMaxSum(arr) {
+    const sorted = arr.sort((a, b) => a - b);
     let lowSum = 0;
     let highSum = 0;
-    for (let i = 0; i < (sorted.length -1); i++) {
+    for (let i = 0; i < (sorted.length - 1); i++) {
         lowSum += sorted[i];
     }
-    const reversed = arr.sort((a,b) => b-a);
+    const reversed = arr.sort((a, b) => b - a);
     for (let i = 0; i < (reversed.length - 1); i++) {
         highSum += reversed[i];
     }
     console.log(highSum + ' ' + lowSum);
 }
-minSumMaxSum([3,2,5,1,4]);
+
+// minSumMaxSum([3,2,5,1,4]);
+
+/* GIVEN STANDARD TIME CONVERT TO MILITARY TIME */
+
+function militaryTime(string) {
+    let amPM = string.slice(string.length - 2);
+    let timeLessAmPm = string.slice(0, string.length - 2);
+    let broken = timeLessAmPm.split(':');
+    let hours = parseInt(broken[0]);
+    let minutes = broken[1];
+    let seconds = broken[2];
+
+    if(amPM === 'PM' && hours !== 12){
+        hours = parseInt(hours) + 12;
+    }
+    if(amPM === 'AM' && hours === 12){
+        hours = '00';
+    }else if(hours < 10){
+        hours = '0' + hours.toString();
+    }else {
+        hours = hours.toString();
+    }
+
+    return (hours + ':' + minutes + ':' + seconds)
+}
+
+// console.log(militaryTime('06:40:03AM'));
+
+/* LONELY INTEGER */
+
+function lonely (numArr){
+    let loneRanger = numArr.filter( value => {
+        return numArr.indexOf(value) === numArr.lastIndexOf(value);
+    })
+    console.log(loneRanger[0]);
+}
+
+lonely([1,1,2,2,3,3,4]);
