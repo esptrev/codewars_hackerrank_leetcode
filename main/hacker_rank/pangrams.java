@@ -1,9 +1,11 @@
 package hacker_rank;
 
+import java.lang.reflect.Array;
+
 public class pangrams {
     public static void main(String[] args) {
         System.out.println(isPangram("We promptly judged antique ivory buckles for the next prize"));
-        System.out.println(pangrammer("We judged antique ivory buckles for the next prize"));
+        System.out.println(anagram("We promptly judged antique ivory buckles for the next prize"));
     }///END OF MAIN
 
     public static boolean isPangram(String inputString){
@@ -36,6 +38,17 @@ public class pangrams {
 
     }
 
+    public static String anagram (String s){
+        s = s.toLowerCase();
+        String alphabet = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z";
+        String [] splitAlpha = alphabet.split(",");
+        for (String value : splitAlpha) {
+            if (!s.contains(value)) {
+                return "anagram = not pangram";
+            }
+        }
+        return "anagram = pangram";
+    }
 
 
 

@@ -30,21 +30,21 @@ console.log(findNumberOfOccurrences(inputStringOne, queryStringOne));
 /// FIND MEDIAN OF ARRAY
 
 const findMedian = (input) => {
-    const sortedInputArray = input.sort((a,b) => a-b);
+    const sortedInputArray = input.sort((a, b) => a - b);
     const middleNum = Math.floor(input.length / 2);
 
-    if(input.length % 2 !== 0){
+    if (input.length % 2 !== 0) {
         return sortedInputArray[middleNum];
-    }else {
-        return(sortedInputArray[middleNum - 1] + sortedInputArray[middleNum]) /2;
+    } else {
+        return (sortedInputArray[middleNum - 1] + sortedInputArray[middleNum]) / 2;
     }
 }
-console.log(findMedian([1,2,3,4,5,6,7,8,9,10]))
+console.log(findMedian([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
 
 const findMedianOfOddLengthArray = (input) => {
     let length = input.length;
-    input.sort((a,b) => a-b);
-    return input[(length -1) /2];
+    input.sort((a, b) => a - b);
+    return input[(length - 1) / 2];
 }
 
 console.log(findMedianOfOddLengthArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]));
@@ -72,9 +72,9 @@ console.log(findUniqueNum([1, 1, 2, 2, 3, 4, 4, 5, 5, 6, 6]));
 const roundingStudentGrades = (grade) => {
     let difference = grade - (grade % 5);
     console.log(difference);
-    if(difference < 3 && grade >= 38){
-       return (parseInt(grade + difference));
-    }else{
+    if (difference < 3 && grade >= 38) {
+        return (parseInt(grade + difference));
+    } else {
         return grade;
     }
 }
@@ -94,7 +94,7 @@ const countTheOccurrences = (arr) => {
     }
     return frequencyArray;
 }
-console.log(countTheOccurrences([1,1,1,2,3,3,4,5,6]))
+console.log(countTheOccurrences([1, 1, 1, 2, 3, 3, 4, 5, 6]))
 
 /* PANGRAM
 https://www.hackerrank.com/challenges/three-month-preparation-kit-pangrams/problem?isFullScreen=true&h_l=interview&playlist_slugs%5B%5D=preparation-kits&playlist_slugs%5B%5D=three-month-preparation-kit&playlist_slugs%5B%5D=three-month-week-two
@@ -105,7 +105,7 @@ const isItAPangram = (string) => {
     let lowerCase = string.toLowerCase();
     let alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
     for (let i = 0; i < alphabet.length; i++) {
-        if(lowerCase.indexOf(alphabet[i]) < 0){
+        if (lowerCase.indexOf(alphabet[i]) < 0) {
             return 'not pangram';
         }
     }
@@ -113,3 +113,34 @@ const isItAPangram = (string) => {
 }
 
 console.log(isItAPangram('abcdefghinopqrstuvwxyz'));
+
+
+/* Make API Call and sort through all pages to find country code given as argument/return country name associated with
+code will have to sort through multiple pages. to find code/name
+*/
+
+async function findCountry(code) {
+    code = code.toUpperCase();
+    let counter = 1;
+    let countryFound = false;
+    do { await
+        fetch(`https://jsonmock.hackerrank.com/api/countries?page=${counter}`)
+            .then(response => response.json())
+            .then(countries => {
+                let countryArray = countries.data
+                // console.log(countryArray);
+                for (let i = 0; i < countryArray.length; i++) {
+                    let countryCode = (countryArray[i].alpha2Code);
+                    // console.log(countryCode);
+                    if (countryCode === code) {
+                        console.log(countryArray[i].name);
+                        countryFound = true;
+                        break;
+                    }
+                }
+            })
+        counter++
+    } while (!countryFound);
+}
+
+findCountry('af');
