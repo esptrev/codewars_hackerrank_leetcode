@@ -550,7 +550,7 @@ function isSortedAndHow(array) {
     }
 }
 
-console.log("is sorted " + isSortedAndHow([9,8,7,6]));
+// console.log("is sorted " + isSortedAndHow([9,8,7,6]));
 
 
 /* CODE WARS ARRAY ARRAY ARRAY
@@ -577,6 +577,8 @@ const explode = (x) => {
     return resultsArray;
 }
 
-console.log(explode([2,5]));
+// console.log(explode([2,5]));
+
+
 
 

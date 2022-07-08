@@ -9,7 +9,7 @@ public class pangrams {
     }///END OF MAIN
 
     public static boolean isPangram(String inputString){
-      String alphabet = "abcdefghijklmnopqrstuvwx   yz";
+      String alphabet = "abcdefghijklmnopqrstuvwxyz";
         return inputString.contains(alphabet);
     }
 
