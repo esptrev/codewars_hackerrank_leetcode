@@ -203,14 +203,14 @@ function militaryTime(string) {
     let minutes = broken[1];
     let seconds = broken[2];
 
-    if(amPM === 'PM' && hours !== 12){
+    if (amPM === 'PM' && hours !== 12) {
         hours = parseInt(hours) + 12;
     }
-    if(amPM === 'AM' && hours === 12){
+    if (amPM === 'AM' && hours === 12) {
         hours = '00';
-    }else if(hours < 10){
+    } else if (hours < 10) {
         hours = '0' + hours.toString();
-    }else {
+    } else {
         hours = hours.toString();
     }
 
@@ -221,11 +221,44 @@ function militaryTime(string) {
 
 /* LONELY INTEGER */
 
-function lonely (numArr){
-    let loneRanger = numArr.filter( value => {
+function lonely(numArr) {
+    let loneRanger = numArr.filter(value => {
         return numArr.indexOf(value) === numArr.lastIndexOf(value);
     })
     console.log(loneRanger[0]);
 }
 
-lonely([1,1,2,2,3,3,4]);
+// lonely([1,1,2,2,3,3,4]);
+
+function diagonalDifference(arr){
+let sumOne = 0;
+let sumTwo = 0;
+let n = arr.length
+    for (let i = 0, j = n-1; i < n ; i++, j--) {
+       sumOne += arr[i][i];
+       sumTwo += arr[i][j];
+    }
+    console.log(Math.floor(sumOne - sumTwo));
+}
+
+// diagonalDifference([ [ 11, 2, 4 ], [ 4, 5, 6 ], [ 10, 8, -12 ] ])
+
+function sockMerchant(n, ar) {
+    // Write your code here
+    let pairs = 0;
+    let accArray = [];
+    for(let i = 0; i < n; i++){
+        if(accArray[i] === ar[i]){
+            accArray[i] = 1
+        }else{
+            accArray[i] = accArray[i] + 1;
+        }
+        if(accArray[i] = 2){
+            pairs ++;
+            accArray[i] = 0;
+        }
+    }
+    return pairs;
+}
+
+console.log(sockMerchant(9, [10, 20, 20, 10, 10, 30, 50, 10, 20]));

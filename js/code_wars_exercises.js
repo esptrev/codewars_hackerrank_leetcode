@@ -387,7 +387,6 @@
 //
 // const merge = (arr1, arr2) => {
 //     let sorted = [];
-//
 //     while (arr1.length && arr2.length) {
 //         if (arr1[0] < arr2[0]) sorted.push(arr1.shift());
 //         else sorted.push(arr2.shift());
@@ -395,8 +394,6 @@
 //
 //     return sorted.concat(arr1.slice().concat(arr2.slice()));
 // };
-//
-//
 // const mergeSort = arr => {
 //     if (arr.length <= 1) return arr;
 //     let mid = Math.floor(arr.length / 2),
@@ -581,4 +578,23 @@ const explode = (x) => {
 
 
 
+let unsortedArray = [8,1,2,9,7,12,13,11,10,5,3,4,6,14];
+function quickSort (array){
+  return array.sort((a,b) => a-b);
+}
+
+
+
+function displayEvenNumbers(){
+    let numbers = [1,2,3,4,5,6,7,8];
+    let evenNumbers = [];
+    for(let i=0; i<numbers.length; i++){
+        if(numbers[i] % 2 === 0){
+            evenNumbers.push(numbers[i]);
+        }
+    }
+    return evenNumbers;
+}
+
+// console.log(displayEvenNumbers()); // should return [2,4,6,8]
 
