@@ -31,9 +31,32 @@ const isZigZag = (n) => {
     }
     return outputArr;
 }
-console.log(isZigZag(numbers));
-console.log(isZigZag(newNums));
-console.log(isZigZag(oldNums));
+// console.log(isZigZag(numbers));
+// console.log(isZigZag(newNums));
+// console.log(isZigZag(oldNums));
 
+function solution(year){
+    var century;
+    var decade;
+    var strYear = year.toString();
 
+    if(year <= 100){
+        century = 1;
+    }else if(year > 100 && year <= 999){
+        century = parseInt(strYear.slice(0,1));
+        decade = parseInt(strYear.slice(1));
+        if(decade > 0){
+            century++;
+        }
+    }else{
+        century = parseInt(strYear.slice(0,2));
+        decade = parseInt(strYear.slice(2));
+        if(decade > 0){
+            century++;
+        }
+    }
+return century;
+}
+
+console.log(solution(375));
 
