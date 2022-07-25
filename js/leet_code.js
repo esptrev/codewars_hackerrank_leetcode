@@ -13,7 +13,7 @@ const twoSums = (numArr, target) => {
         }
     }
 }
-// console.log(twoSums([1,2,3,4,5,6], 11));
+console.log(twoSums([1,3,5], 4));
 
 /* [a < b > c]  [a > b < c] */
 
@@ -59,4 +59,54 @@ return century;
 }
 
 console.log(solution(375));
+
+function countPairsDivisibleByK (A,n,K){
+    let freqArr = Array(K).fill(0);
+
+    let count = 0;
+    for (let i = 0; i < n; i++) {
+        var remainder = A[i] % K;
+        count += freqArr[(K - remainder) % K];
+        freqArr[remainder]++;
+    }
+    return count;
+}
+
+var A = [2,2,1,7,5,3];
+var n = A.length;
+var K = 4;
+
+
+var a = [25,2,3,57,38,41];
+let singlesArray = (a.join('').split(''));
+
+function findTheFreq(arr){
+    let freq = {};
+    for (let i = 0; i < arr.length; i++) {
+        if(freq[arr[i]]){
+            freq[[arr[i]]] += 1;
+        }else{
+            freq[arr[i]] = 1;
+        }
+    }
+    return freq;
+}
+
+console.log(findTheFreq(singlesArray));
+
+var arrayRankTransform = function(arr) {
+    let position = [];
+    const sortedCopyArr =  arr.slice(0).sort((a,b) => a-b);
+    const uniqSortArr = [...new Set(sortedCopyArr)];
+    console.log(arr);
+    console.log(uniqSortArr);
+    for(let i=0;i<sortedCopyArr.length;i++){
+        position.push(uniqSortArr.indexOf(arr[i]) +1);
+    }
+    return position;
+};
+
+var outlayer = [37,12,28,9,100,56,80,5,12];
+
+console.log(arrayRankTransform(outlayer));
 
