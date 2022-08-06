@@ -115,3 +115,14 @@ var removeDuplicates = function(nums) {
 };
 
 console.log(removeDuplicates([0,0,1,1,1,2,2,3,3,4]));
+
+var scope = "js scope";
+function checkScope(){
+    var scope = "javascript scope";
+    function f(){
+        return scope;
+    }
+    return f;
+}
+
+console.log(checkScope());
