@@ -146,12 +146,76 @@ console.log(strArr.reduce(conCat));
 console.log(strArr.reduceRight(conCat));
 /// REDUCERIGHT() WORKS FROM RIGHT TO LEFT, ESSENTIALLY REVERSING THE ARRAY
 
+/// ITERATORS THAT RETURN NEW ARRAYS /// MAP()--SIMILAR TO FOREACH()
 
+function addCurve(num){
+    return num + 5;
+}
+console.log(addNums.map(addCurve));
 
+function first(word){
+    return word[0];
+}
+console.log(strArr.map(first));
 
+/// FILTER()  RETURNS A NEW ARRAY, ITERATES LIKE EVERY() BUT INSTEAD OF RETURN BOOLEAN, RETURNS THE ELEMENTS THAT SATISFY THE BOOLEAN ///
 
+const isNumEven = (num) => {
+    return (num % 2 === 0);
+}
+const isNumOdd = (num) => {
+    return (num % 2 !== 0);
+}
+const numsToFilter = [];
+for (let i = 0; i < 21; i++) {
+    numsToFilter.push(i);
+}
+console.log(numsToFilter.filter(isNumEven));
+console.log(numsToFilter.filter(isNumOdd));
 
+function passing(num){
+    return num > 69;
+}
+let grades = [];
+for (let i = 0; i < 20; i++) {
+    grades[i] =  Math.floor(Math.random() * 101);
+}
+console.log(grades)
+console.log(grades.filter(passing));
 
+///  TWO DIMENSIONAL ARRAYS ///  ITERATE OUTER, THEN ITERATE INNER
+var _twoDimensionalArr = [[95,90,80], [88,55,69],[99,25,100]];
+console.log(_twoDimensionalArr[1][1]);
 
+var sog = 0;
+var aog = 0;
 
+for (let i = 0; i < _twoDimensionalArr.length; i++) {
+    for (let j = 0; j < _twoDimensionalArr[i].length; j++) {
+        sog += _twoDimensionalArr[i][j];
+    }
+    aog = sog / _twoDimensionalArr[i].length;
+    console.log(aog.toFixed(2));
+    aog = 0;
+    sog = 0;
+}
+
+/// ARRAY OF OBJECTS ///
+ function Point (x,y){
+    this.x = x;
+    this.y = y;
+ }
+function displayPoints(arr){
+    for (let i = 0; i < arr.length; i++) {
+        console.log(arr[i].x + ',' + arr[i].y);
+    }
+
+}
+
+var p1 = new Point(1,2);
+var p2 = new Point(3,4);
+var p3 = new Point(5,6);
+var p4 = new Point(7,8);
+let pointsObject = [p1,p2,p3,p4];
+displayPoints(pointsObject);
 
