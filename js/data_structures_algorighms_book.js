@@ -219,3 +219,60 @@ var p4 = new Point(7,8);
 let pointsObject = [p1,p2,p3,p4];
 displayPoints(pointsObject);
 
+/// temp object constructor
+function WeeklyTemp(){
+    this.dataStore = [];
+    this.add = add;
+    this.average = average;
+}
+function add(temp){
+    this.dataStore.push(temp);
+}
+function average(){
+    var total = 0;
+    for (let i = 0; i < this.dataStore.length; i++) {
+        total += this.dataStore[i];
+    }
+    return total / this.dataStore.length
+}
+
+/// creates new weekly object here and adds temps  using an zero argument constructor above
+var thisWeek = new WeeklyTemp();
+thisWeek.add(52);
+thisWeek.add(55);
+thisWeek.add(61);
+thisWeek.add(65);
+thisWeek.add(55);
+thisWeek.add(50);
+thisWeek.add(52);
+thisWeek.add(49);
+console.log(thisWeek.average());
+
+function StudentGrade (){
+    this.gradesArr = [];
+    this.add = addGrades;
+    this.average = averageOfStudentGrades;
+}
+
+function addGrades(grade){
+    this.gradesArr.push(grade);
+}
+
+function averageOfStudentGrades(){
+    let accumulatedScore = 0;
+    for (let i = 0; i < this.gradesArr.length; i++) {
+        accumulatedScore += this.gradesArr[i];
+    }
+    return accumulatedScore / this.gradesArr.length;
+}
+
+var grade = new StudentGrade();
+grade.add(100);
+grade.add(95);
+grade.add(90);
+grade.add(85);
+grade.add(80);
+grade.add(75);
+grade.add(80);
+grade.add(85);
+console.log(grade.average());
