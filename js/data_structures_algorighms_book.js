@@ -276,3 +276,31 @@ grade.add(75);
 grade.add(80);
 grade.add(85);
 console.log(grade.average());
+
+
+function LettersObject (){
+    this.letterArr = [];
+    this.add = addLetters;
+    this.word = joinLetters;
+}
+
+function addLetters(char){
+    this.letterArr.push(char)
+}
+
+function joinLetters (){
+   return this.letterArr.reduce((prevChar,currChar) => prevChar + currChar);
+}
+
+var letter = new LettersObject();
+letter.add('l');
+letter.add('o');
+letter.add('v');
+letter.add('e');
+letter.add('b');
+letter.add('u');
+letter.add('g');
+letter.add('g');
+
+console.log(letter);
+console.log(letter.word())
