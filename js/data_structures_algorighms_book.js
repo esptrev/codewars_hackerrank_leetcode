@@ -248,7 +248,7 @@ thisWeek.add(52);
 thisWeek.add(49);
 console.log(thisWeek.average());
 
-function StudentGrade (){
+function StudentGrade(){
     this.gradesArr = [];
     this.add = addGrades;
     this.average = averageOfStudentGrades;
@@ -278,7 +278,7 @@ grade.add(85);
 console.log(grade.average());
 
 
-function LettersObject (){
+function LettersObject(){
     this.letterArr = [];
     this.add = addLetters;
     this.word = joinLetters;
@@ -288,7 +288,7 @@ function addLetters(char){
     this.letterArr.push(char)
 }
 
-function joinLetters (){
+function joinLetters(){
    return this.letterArr.reduce((prevChar,currChar) => prevChar + currChar);
 }
 
@@ -313,28 +313,32 @@ function List(){
     this.dataStore = [];
     this.clear = clear;
     this.find = find;
-    this.toString = toString;
+    this.toString = listToString;
     this.insert = insert;
     this.append = append;
     this.remove = remove;
     this.front = front;
     this.end = end;
     this.prev = prev;
-    this.length = length;
+    this.next = next;
+    this.length = listLength;
     this.currPos = currPos;
     this.moveTo = moveTo;
     this.getElement = getElement;
     this.contains = contains;
+    this.hasNext = hasNext;
+    this.hasPrevious = hasPrevious;
+    this.insertIf = insertIf;
 }
 
 /// ADDING TO LIST IS EASY
-function append (element){
+function append(element){
     this.dataStore[this.listSize++] = element;
 }
 
 /// REMOVING IS LOGICALLY DIFFERENT, FIRST FIND ELEMENT, THEN REMOVE, THEN ADJUST LIST TO CLOSE THE MISSING ELEMENT INDEX ///  ITERATE OVER ARRAY LIST AND RETURN INDEX IF ELEMENT IS LOCATED IN THE AL IF ELEMENT IS NOT PRESENT IN AL THEN RETURN -1 WHICH IS STANDARD FOR UNDEFINED IN JS  USE THE -1 AS A CONDITIONAL FOR THE REMOVE FUNCTION
-function find (element){
-    for (let i = 0; i < this.dataStore.length; i++) {
+function find(element){
+    for (let i = 0; i < this.dataStore.length; ++i) {
         if(this.dataStore[i] === element){
             return i;
         }
@@ -352,5 +356,130 @@ function remove(element){
     return false;
 }
 
+function listLength(){
+    return this.listSize;
+}
+
+/// DOESN'T ACTUALLY RETURN STRING, WILL RETURN ARRAY (WOULD RETURN MEMEORY LOCATION WITHOUT TOSTRING) BUT ALLOWS US TO VIEW THE OBJECT
+function listToString(){
+    return this.dataStore;
+}
+
+var listNames = new List();
+listNames.append("trevor");
+listNames.append("kristin");
+listNames.append("korbin");
+listNames.append("berrygirl");
+console.log(listNames.toString());
+listNames.remove('berrygirl');
+console.log(listNames.toString());
 
 
+/// THIS INSERT FUNCTION CALLED FIND FUNCTION, JUST LIKE THE REMOVE, TO FIND CORRECT INDEX FOR INSERTION  CALL SPLICE() TO CARRY OUT INSERTION, INCREMENT SIZE AND THEN RETURN TRUE IF INSERTION WAS SUCCESSFUL
+function insert(element, after){
+    var insertPosition = this.find(after);
+    if(insertPosition > -1){
+        /// SPLICE CAN BE USED FOR INSERTION AS WELL AS DELETION
+        this.dataStore.splice(insertPosition + 1,0,element);
+        ++this.listSize;
+        return true;
+    }
+    return false;
+}
+
+console.log(listNames.insert('growlygirl','korbin')); /// logs true to console
+console.log(listNames.toString()); /// logs array to console
+
+function clear(){
+    delete this.dataStore;
+    this.dataStore = [];
+    this.listSize = 0;
+    this.pos = 0;
+}
+// listNames.clear();
+// console.log(listNames.toString());  /// logs empty [] to console
+
+function contains(element){
+    for (let i = 0; i < this.dataStore.length; ++i) {
+        if(this.dataStore[i] === element){
+            return true;
+        }
+    }
+    return false;
+}
+console.log(listNames.contains('korbin'));
+/// THE REST OF THE FUNCTIONS CREATED IN CONSTRUCTOR ARE USED FOR TRAVERSING THE AL ///
+function front(){
+    this.pos = 0;
+}
+function end(){
+    this.pos = this.listSize -1;
+}
+function prev(){
+    return this.dataStore[--this.pos];
+}
+function next(){
+    return this.dataStore[this.pos++];
+}
+
+function hasNext(){
+    return this.pos <= this.listSize - 1;
+}
+
+function hasPrevious() {
+    return this.pos > 0;
+}
+function currPos(){
+    return this.pos;
+}
+function moveTo(position){
+    this.pos = position;
+}
+function getElement(){
+    return this.dataStore[this.pos];
+}
+function insertIf(element) {
+    var greaterThan = true;
+    for(this.front(); this.hasNext(); ){
+        if(this.next() > element) {
+            greaterThan = false;
+            break;
+        }
+    }
+    console.log(element);
+    if(greaterThan){
+        this.append(element);
+        return true;
+    } else {
+        return false;
+    }
+}
+
+var listOfNames = new List();
+listOfNames.append('honey');
+listOfNames.append('emily');
+listOfNames.append('hector');
+listOfNames.append('david');
+listOfNames.append('isabelle');
+listOfNames.append('lizzy');
+listOfNames.append('josephine');
+console.log(listOfNames.toString());
+
+listOfNames.front();
+console.log(listOfNames.getElement())
+listOfNames.next();
+console.log(listOfNames.getElement())
+listOfNames.end();
+console.log(listOfNames.getElement());
+listOfNames.prev();
+console.log(listOfNames.getElement());
+
+/// WE CAN CAPTURE THE BEHAVIOR OF THE PREVIOUS CODE FRAGMENTS WITH AN INTERATOR WHICH ALLOWS US TO TRAVERSE THE AL WITHOUT THE NEED TO REFERENCING INTERNAL STORAGE -- ELIMINATES WORRY OF DATA STORAGE -- ALLOWS UPDATING LIST WITHOUT NEED TO UPDATE ITERATOR ITSELF -- PROVIDES UNIFORM METHOS FOR ACCESSING WITHOUT REGARDS TO DATA TYPE ///
+
+for(listOfNames.front(); listOfNames.currPos() < listOfNames.length(); listOfNames.next()){
+    console.log('bye bye:' + listOfNames.getElement());
+}
+
+for(listOfNames.end(); listOfNames.currPos() > 0; listOfNames.prev()){
+    console.log('hi:' + listOfNames.getElement());
+}
