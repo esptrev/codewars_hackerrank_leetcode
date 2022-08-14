@@ -304,3 +304,53 @@ letter.add('g');
 
 console.log(letter);
 console.log(letter.word())
+
+/// CHAPTER 3 LISTS ///
+
+function List(){
+    this.listSize = 0;
+    this.pos = 0;
+    this.dataStore = [];
+    this.clear = clear;
+    this.find = find;
+    this.toString = toString;
+    this.insert = insert;
+    this.append = append;
+    this.remove = remove;
+    this.front = front;
+    this.end = end;
+    this.prev = prev;
+    this.length = length;
+    this.currPos = currPos;
+    this.moveTo = moveTo;
+    this.getElement = getElement;
+    this.contains = contains;
+}
+
+/// ADDING TO LIST IS EASY
+function append (element){
+    this.dataStore[this.listSize++] = element;
+}
+
+/// REMOVING IS LOGICALLY DIFFERENT, FIRST FIND ELEMENT, THEN REMOVE, THEN ADJUST LIST TO CLOSE THE MISSING ELEMENT INDEX ///  ITERATE OVER ARRAY LIST AND RETURN INDEX IF ELEMENT IS LOCATED IN THE AL IF ELEMENT IS NOT PRESENT IN AL THEN RETURN -1 WHICH IS STANDARD FOR UNDEFINED IN JS  USE THE -1 AS A CONDITIONAL FOR THE REMOVE FUNCTION
+function find (element){
+    for (let i = 0; i < this.dataStore.length; i++) {
+        if(this.dataStore[i] === element){
+            return i;
+        }
+    }
+    return -1;
+}
+
+function remove(element){
+    var elementIndex = this.find(element);
+    if(elementIndex > -1){
+        this.dataStore.splice(elementIndex,1); /// SPLICE STARTING AT INDEX OF ELMNT IF FOUND AND REMOVE ONE INDEX OR POSITION
+        --this.listSize;  /// DECREMENT LIST SIZE TO CLOSE EMPTY INDEX
+        return true;
+    }
+    return false;
+}
+
+
+
