@@ -483,3 +483,19 @@ for(listOfNames.front(); listOfNames.currPos() < listOfNames.length(); listOfNam
 for(listOfNames.end(); listOfNames.currPos() > 0; listOfNames.prev()){
     console.log('hi:' + listOfNames.getElement());
 }
+
+
+/// READING TEXT FILES --- CODE FROM BOOK DOESN'T WORK --- CODE BELOW WILL PRINT MOVIES TO CONSOLE ////
+var fs = require("fs");
+var path = './films.txt';
+var movies = [];
+fs.readFile(path, "utf8", function(error, data) {
+    if (error) {
+        console.error("read error:  " + error.message);
+    } else {
+        movies += data;
+    }
+    console.log(movies)
+});
+
+console.log('movie one:' + movies[0])
