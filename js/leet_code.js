@@ -154,6 +154,8 @@ var minimumTotal = function (triangle) {
 }
 console.log(minimumTotal([[-1], [2, 3], [1, -1, -3]]));
 
+
+//leetcode 804
 var uniqueMorseRepresentations = function (words) {
 
     var seqArray = [];
@@ -176,5 +178,11 @@ var uniqueMorseRepresentations = function (words) {
 
 console.log(uniqueMorseRepresentations(["gin","zen","gig","msg"]))
 
+// leetcode 1338  input number array output is a number
+var minSetSize = function(arr){
+    return arr.reduce((acc, curr) => {
+       acc[curr] = (acc[curr] ?? 0) + 1;
+   });
+}
 
-
+console.log(minSetSize([5, 5, 5, 2, 2, 2, 2, 2, 9, 4]));
