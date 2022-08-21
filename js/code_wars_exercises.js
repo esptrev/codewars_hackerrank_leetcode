@@ -622,3 +622,13 @@ return value;
 console.log(testRepeat([5,2,1,2,5]));
 console.log(testRepeat([6,5,5,10,10,10]));
 console.log(testRepeat([3,4,1,6,10]));
+
+///leetcode remove duplicates
+var removeDuplicates = function(nums) {
+    for(let i= nums.length-1;i>=0;i--){
+        if(nums[i] === nums[i-1]){
+            nums.splice(i,1);
+        }
+    }
+    console.log(nums);
+};
