@@ -667,7 +667,7 @@ var multiply = function(num1, num2) {
     return product.join("").replace(/^0*(\d)/, "$1");
 };
 
-///is n a power of 4
+///Leetcode #342
 var isPowerOfFour = function(n) {
     if (n === 0) {
         return false;
@@ -679,5 +679,13 @@ var isPowerOfFour = function(n) {
         return isPowerOfFour(n/4)
     }
 };
-
 console.log(isPowerOfFour(1));
+
+///Leetcode 343
+const integerBreak = (n) => {
+    if(n<=3) return n-1;
+    if(n%3===0) return Math.pow(3, n/3);
+    if(n%3===1) return 4*Math.pow(3, (n-4)/3);
+    return 2*Math.pow(3,parseInt(n/3));
+}
+console.log(integerBreak(10));
