@@ -689,3 +689,16 @@ const integerBreak = (n) => {
     return 2*Math.pow(3,parseInt(n/3));
 }
 console.log(integerBreak(10));
+
+///Leetcode 326
+var isPowerOfThree = function(n) {
+    if (n === 0) {
+        return false;
+    } else if (n === 1) {
+        return true;
+    } else if (!Number.isInteger(n/3)) {
+        return false;
+    } else {
+        return isPowerOfThree(n/3);
+    }
+};
