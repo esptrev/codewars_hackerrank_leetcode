@@ -652,6 +652,7 @@ var merge = function(nums1, m, nums2, n) {
     }
 };
 
+//multiply strings without converting directly to int//
 var multiply = function(num1, num2) {
     const product = Array(num1.length+num2.length).fill(0);
     for (let i = num1.length; i--; null) {
@@ -665,3 +666,18 @@ var multiply = function(num1, num2) {
     }
     return product.join("").replace(/^0*(\d)/, "$1");
 };
+
+///is n a power of 4
+var isPowerOfFour = function(n) {
+    if (n === 0) {
+        return false;
+    } else if (n === 1) {
+        return true;
+    } else if (!Number.isInteger(n/4)) {
+        return false;
+    } else {
+        return isPowerOfFour(n/4)
+    }
+};
+
+console.log(isPowerOfFour(1));
