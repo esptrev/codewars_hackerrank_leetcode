@@ -19,6 +19,8 @@ function addUpToSecond(n){
 // var time4= performance.now();
 // console.log(`Elapsed time: ${(time4 - time3) / 1000}`);
 
+
+//quadratic O(n2) grows exponential with the nested loops
 function printAllPairs(n){
     for (let i = 0; i < n; i++) {
         for (let j = 0; j < n; j++) {
@@ -27,3 +29,41 @@ function printAllPairs(n){
     }
 }
 printAllPairs(5);
+
+
+// Big O(n)  based on n being bigger than 5, big o deals with worst case
+function logAtLeastFive(n){
+    for (let i = 0; i <= Math.max(5,n); i++) {
+        console.log(i);
+    }
+}
+
+
+///Big O(1) pretty much constant here, as regardless of n we're only going to 5
+function logatMostFive(n){
+    for (let i = 0; i <= Math.min(5,n); i++) {
+        console.log(i);
+    }
+}
+
+
+///SPACE COMPLEXITY INTRO
+/// primitive values are constant space  arrays & objects are O(n) space complexity
+
+// Big O(1)  input arr size doesn't matter  we're creating a single variable from that array in total so its constant
+function sum(arr){
+    let total = 0;
+    for (let i = 0; i < arr.length; i++) {
+        total += arr[i]
+    }
+    return total;
+}
+
+/// Big O(n)  the new array grows directly in proportion to the input array
+function double(arr){
+    let nArr = [];
+    for (let i = 0; i < arr.length; i++) {
+        nArr.push(2 * arr[i]);
+    }
+    return nArr;
+}
