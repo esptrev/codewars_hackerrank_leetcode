@@ -92,10 +92,24 @@ PUSH O-1 POP O-1 SHIFT O-N UNSHIFT O-N CONCAT 0-N SLICE O-N SPLICE 0-N SORT O(N*
 function charCount(str){
     //do something
     //create object at start
+    var freqObj = {};
     //return an objec with keys that are lowercase alaphanumberic char in the string
     // iterate over input string for each character
-        // if the char is a key in object add 1 to value
-        // if the char isn't in object , add to object and set value to 1
-        // if char is something else, ignore
+    for (let i = 0; i < str.length; i++) {
+        var char = str[i];
+        if(freqObj[char] > 0){
+            // if the char is a key in object add 1 to value
+            freqObj[char]++;
+        }else{
+            // if the char isn't in object , add to object and set value to 1
+            freqObj[char] = 1;
+        }
+    }
+    // if char is something else, ignore
     // then return object at end
+    return freqObj;
 }
+
+console.log(charCount('trevor'));
+
+//If you get stuck and cannot solve, SIMPLIFY
