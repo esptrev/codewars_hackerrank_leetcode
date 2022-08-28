@@ -155,3 +155,26 @@ function isAlphaNum(char) {
         !(code > 64 && code < 91) &&
         !(code > 96 && code < 123));
 }
+
+////COMMON PROBLEM SOLVING PATTERNS
+// FREQUENCY COUNTERS
+/// WRITE A FUNCTION CALLED SAME WHICH TAKES TWO ARRAYS. RETURN TRUE IF EVERY VALUE IN FIRST ARRAY HAS ITS CORRESPONDING VALUE IN THE SECOND ARRAY SQUARED. FREQ MUST BE THE SAME
+//SAME([1,2,3], [4,1,9])  RETURNS TRUE
+//SAME([1,2,3],[1,9]) RETURNS FALSE
+//SAME([1,2,1],[4,4,1]) RETURNS FALSE, MUST HAVE SAME FREQ
+function same(arr1,arr2){
+    //check length first
+    if(arr1.length !== arr2.length){
+        return false;
+    }
+    //iterate first array
+    for (let i = 0; i < arr1.length; i++) {
+        let correctIndex = arr2.indexOf(arr1[i] ** 2) // checking second array for index of each element of first array squared
+        if(correctIndex === -1){
+            return false;  // returns false if not present, -1 is js value when element isn't present
+        }
+        arr2.splice(correctIndex,1); // shortening arr2 to remove firstindexof arr1 element, checks freq condition
+    }
+    return true;  // current syntax has a O(n^2) time complexity.  fori && indexOf both loop and are nested
+}
+console.log(same([1,2,3,],[1,4,9]));
