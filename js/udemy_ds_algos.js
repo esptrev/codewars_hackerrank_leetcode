@@ -96,7 +96,7 @@ function charCount(str){
     //return an objec with keys that are lowercase alaphanumberic char in the string
     // iterate over input string for each character
     for (let i = 0; i < str.length; i++) {
-        var char = str[i];
+        var char = str[i].toLowerCase(); // in this problem casing is irrelevant
         if(freqObj[char] > 0){
             // if the char is a key in object add 1 to value
             freqObj[char]++;
@@ -105,11 +105,53 @@ function charCount(str){
             freqObj[char] = 1;
         }
     }
-    // if char is something else, ignore
-    // then return object at end
+    // if char is something else, ignore  ---- then return object at end
     return freqObj;
 }
-
 console.log(charCount('trevor'));
 
 //If you get stuck and cannot solve, SIMPLIFY
+//WHEN YOU HAVE SOMETHING THAT WORKS, GO BACK AND REFACTOR IF POSSIBLE
+//CAN YOU CHECK RESULTS
+//CAN YOU DERIVE RESULTS DIFFERENTLY
+// CAN YOU UNDERSTAND CODE AT A GLANCE --- IMPORTANT FOR FUTURE AND FOR TEAM MATES COMPANY GUIDELINES
+// CAN YOU USE RESULT OR METHOD FOR SOME OTHER PROBLEM
+// CAN YOU IMPROVE PERFORMANCE?  REDUCE TIME/SPACE  NESTED LOOPS ARE QUADRATIC
+//LOOK AT OTHERS WORK, SIMILAR BUT DIFFERENT PROBLEMS
+
+
+
+// function charCountTwo(str){
+//     var charArr = {};
+//     for (let i = 0; i < str.length; i++) {
+//         var char = str[i].toLowerCase();
+//         if(/[a-z0-9]/.test(char)){  //[a-z\d] intellij rec notation for all integers  will 'weed out' anything not a char or int
+//             if(charArr[char] > 0){
+//                 charArr[char]++;
+//             }else{
+//                 charArr[char] = 1;
+//             }
+//         }
+//     }
+//     return charArr;
+// }
+
+//SECOND REFACTOR BELOW ELMINATES FOR LOOP AND USE FOR OF  TIME COMPLEXITY STILL O(N) BUT LOOKS CLEANER AND ELIMINATES I
+function charCountTwo(str){
+    var charArr = {};
+    for (var char of str) {
+        char = char.toLowerCase();
+        if(isAlphaNum(char)){  // we ditch regex (they're slow)  and call a sep function to handle the verification
+            charArr[char] = ++charArr[char] || 1;  // two if else blocks can be condensed to this, ternary?
+        }
+    }
+    return charArr;
+}
+console.log(charCountTwo('trevor1976'));
+
+function isAlphaNum(char) {
+    var code = char.charCodeAt(0);
+    return !(!(code > 47 && code < 58) &&
+        !(code > 64 && code < 91) &&
+        !(code > 96 && code < 123));
+}
