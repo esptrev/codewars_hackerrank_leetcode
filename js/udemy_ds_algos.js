@@ -76,4 +76,26 @@ let instructor = {
     favoritNums: [1,2,3,4]
 }
 
+////BIG O ARRAYS ORDERED LISTS  THE ORDER OF AN ARRAY COMES AT A COST IN BIGO  SEARCHING O(N) ACCESS O(1) INSERTION AND REMOVAL DEPENDS....PUSH/POP= O(1) simple  SHIFT/UNSHIFT= O(N)
+let names = ['mike','trevor','kristin','andrea'];
+let values = [true,{},[],2,'awesome'];
 
+/*
+PUSH O-1 POP O-1 SHIFT O-N UNSHIFT O-N CONCAT 0-N SLICE O-N SPLICE 0-N SORT O(N*LOGN) FOREACH,MAP,FILTER,REDUCE,ETC O-N
+ */
+///START OF ALGORITHMS  BREAKING IT DOWN DETERMINING INPUTS OUTPUTS
+
+////WRITE A FUNCTION THAT TAKES INTO A STRING AND RETURN THE COUNTS OF EACH CHARACTER IN THE STRING
+// charCount('aaaa'); should return a:4
+// charCount('hello'); should return h:1, e:1, l:2, o:1
+
+function charCount(str){
+    //do something
+    //create object at start
+    //return an objec with keys that are lowercase alaphanumberic char in the string
+    // iterate over input string for each character
+        // if the char is a key in object add 1 to value
+        // if the char isn't in object , add to object and set value to 1
+        // if char is something else, ignore
+    // then return object at end
+}
