@@ -186,3 +186,24 @@ var minSetSize = function(arr){
 }
 
 console.log(minSetSize([5, 5, 5, 2, 2, 2, 2, 2, 9, 4]));
+
+//leetcode 1 two sum  given an array of int nums and int target return indices of two elements of nums that add up to target
+
+var twoSum = function (nums,target){
+    //should return obj of indices of length 2, so need to create answer obj
+    var indices = {};
+    //can only use nums element one time
+    //assume exactly one solution to problem
+    // iterate nums arr
+    nums.forEach((int, index) => {
+        indices[int] = index
+    });
+    for (let index = 0; index < nums.length; index++) {
+        const difference = target - nums[index];
+        if(indices[difference] !== undefined && indices[difference] !== index){
+            return [index,indices[difference]]
+        }
+    }
+    // so maybe forof loop  subtract element from target, save  second loop to check for difference
+    // add index of matches to answer array
+}
