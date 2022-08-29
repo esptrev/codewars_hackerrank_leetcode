@@ -207,3 +207,22 @@ var twoSum = function (nums,target){
     // so maybe forof loop  subtract element from target, save  second loop to check for difference
     // add index of matches to answer array
 }
+
+
+//leetcode 7 reverse integer
+var reverse = function (num) {
+    // Conver the number to a string, split it to an array, reverse it, and then re-join it
+    const reversedNumber = parseInt(
+        Math.abs(num).toString().split('').reverse().join('')
+    );
+
+    // Check for an invalid output
+    if (reversedNumber > 2147483647) {
+        return 0;
+    }
+
+    // Return the reversed number (negating it if the original number was negative)
+    return num < 0 ? -Math.abs(reversedNumber) : reversedNumber;
+};
+
+
