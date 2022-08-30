@@ -274,8 +274,6 @@ function sumZero1(arr){
         }
     }
 }
-
-
 //O(n)--O(1) solution
 function sumZero2(arr){
     let left = 0;
@@ -291,5 +289,16 @@ function sumZero2(arr){
         }
     }
 }
+
+// count unique values solution below is O(n)--O(n)
+function countUniqueValues(arr){
+    let freqObj = {}
+    for (const arrElement of arr) {
+        freqObj[arrElement] = (freqObj[arrElement] || 0) + 1
+    }
+    return Object.keys(freqObj).length;
+}
+
+console.log(countUniqueValues([1,2,3,4,4,4,7,7,12,12,13]));
 
 
