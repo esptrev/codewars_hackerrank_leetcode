@@ -185,7 +185,7 @@ var minSetSize = function(arr){
    });
 }
 
-console.log(minSetSize([5, 5, 5, 2, 2, 2, 2, 2, 9, 4]));
+// console.log(minSetSize([5, 5, 5, 2, 2, 2, 2, 2, 9, 4]));
 
 //leetcode 1 two sum  given an array of int nums and int target return indices of two elements of nums that add up to target
 
@@ -225,4 +225,32 @@ var reverse = function (num) {
     return num < 0 ? -Math.abs(reversedNumber) : reversedNumber;
 };
 
+///leetcode 29 divide two integers cannot use % * / must use  + - and binary bitwise operators << >> ~  left shift << is same as multiplying by 2  (4 << 1 = 8) right shift >> is same as dividing by two in binary ie no remainder 9/2=4 not 4.5 (9 >> 1 = 4) bitwise complement ~
 
+var divide = function (dividend, divisor) {
+   let isPositive = (divisor > 0 && dividend > 0) || (divisor < 0 && dividend < 0)
+    let quotient = 0
+    const maxValue = 2147483647
+    const minValue = -2147483648
+
+    dividend = Math.abs(dividend)
+    divisor = Math.abs(divisor)
+
+    if(divisor === 1){
+        quotient = dividend
+    }
+    while(divisor !== 1 && dividend >= divisor){
+        dividend -= divisor
+        quotient++
+    }
+    quotient = isPositive ? quotient : -quotient;
+    if(quotient > maxValue){
+        return maxValue
+    }
+    if(quotient < minValue){
+        return minValue;
+    }
+    return quotient;
+};
+
+console.log(divide(10,3));

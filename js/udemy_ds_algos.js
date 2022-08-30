@@ -208,3 +208,4 @@ function sameTwo(arr1,arr2){
     return true;
 }
 console.log(sameTwo([1, 2, 3, 4], [1, 4, 9]));
+
