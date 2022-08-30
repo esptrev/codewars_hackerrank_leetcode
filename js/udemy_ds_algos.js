@@ -298,7 +298,49 @@ function countUniqueValues(arr){
     }
     return Object.keys(freqObj).length;
 }
-
 console.log(countUniqueValues([1,2,3,4,4,4,7,7,12,12,13]));
 
+function countUniqueWithPointers(arr){
+    if(arr.length === 0) return 0
+    var i = 0;
+    for (let j = 0; j < arr.length; j++) {
+      if(arr[i] !== arr[j]){
+          i++;
+          arr[i] = arr[j];
+      }
+    }
+    return i + 1;
+}
+console.log(countUniqueWithPointers([1,1,2,3,3,4,5,6,6,7]))
 
+/// sliding windows pattern can be an array or number from one position to another, useful for subsets of data in arr/string
+
+// O(n^2)--O(n)  brute force
+function maxSubarrSum(arr,n){
+    if(n > arr.length) return null;
+    var totalSum = -Infinity;
+    for (let i = 0; i < arr.length - n + 1; i++) {
+       let temp = 0;
+        for (let j = 0; j < n; j++) {
+            temp += arr[i + j];
+        }
+        if(temp > totalSum) totalSum = temp;
+    }
+    return totalSum;
+}
+console.log(maxSubarrSum([1,2,5,2,8,1,5],2));
+
+function maxSubArrSlider(arr,num){
+    let maxSum = 0;
+    let tempSum = 0;
+    if(arr.length < num) return null;
+    for (let i = 0; i < num; i++) {
+        maxSum += arr[i];
+    }
+    tempSum = maxSum;
+    for (let i = num; i < arr.length; i++) {
+        tempSum = tempSum - arr[i - num] + arr[i];
+        maxSum = Math.max(maxSum,tempSum);
+    }
+    return maxSum;
+}
