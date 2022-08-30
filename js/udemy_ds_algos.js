@@ -236,5 +236,60 @@ function validAnagram(strA, strB) {
     }
     return true;
 }
-
 console.log(validAnagram('trevor', 'revort'));
+
+function validAnagram2(first, second) {
+    if (first.length !== second.length) {
+        return false;
+    }
+    const lookup = {};
+    for (let i = 0; i < first.length; i++) {
+        let letter = first[i];
+        // if letter exists, increment, otherwise set to 1
+        lookup[letter] ? lookup[letter] += 1 : lookup[letter] = 1;
+    }
+
+    for (let i = 0; i < second.length; i++) {
+        let letter = second[i];
+        // can't find letter or letter is zero then it's not an anagram
+        if (!lookup[letter]) {
+            return false;
+        } else {
+            lookup[letter] -= 1;
+        }
+    }
+    return true;
+}
+validAnagram2('anagrams', 'nagaramm')
+
+/// multiple pointers  write a function called sumZero which accepts an array sorted in non descending order. Find the first pair of arr elements where the sum = 0 return a new array of the two elements, or undefined if pair doesn't exist
+
+function sumZero1(arr){
+    //brute force way of doing it  O(n^2)--O(1) extremely slow when you have 1000 elements in the array
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr.length; j++) {
+            if(arr[i] + arr[j] === 0){
+                return [arr[i],arr[j]];
+            }
+        }
+    }
+}
+
+
+//O(n)--O(1) solution
+function sumZero2(arr){
+    let left = 0;
+    let right = arr.length - 1;
+    while(left < right){
+        let sum = arr[left] + arr[right];
+        if(sum === 0){
+            return [arr[left],arr[right]];
+        }else if(sum > 0){
+            right--
+        }else{
+            left++
+        }
+    }
+}
+
+
