@@ -182,11 +182,12 @@ function same(arr1, arr2) {
     }
     return true;  // current syntax has a O(n^2) time complexity.  fori && indexOf both loop and are nested
 }
+
 console.log(same([1, 2, 3, 4], [1, 4, 9]));
 
 ///REFACTORED FUNCTION BELOW USING 3 SEPARATE LOOPS O(3N) --> O(N) VS O(N^2) WHICH IS TC FOR NESTED LOOPS
-function sameTwo(arr1,arr2){
-    if(arr1.length !== arr2.length){
+function sameTwo(arr1, arr2) {
+    if (arr1.length !== arr2.length) {
         return false;
     }
     let freqCount1 = {}; // set up two sep freq objects
@@ -198,14 +199,42 @@ function sameTwo(arr1,arr2){
         freqCount2[arr2Element] = (freqCount2[arr2Element] || 0) + 1  // iterate second arr and populate freq obj
     }
     for (let key in freqCount1) {
-        if(!(key ** 2 in freqCount2)){  // iterate second obj for presence of freq obj 1 element squared
+        if (!(key ** 2 in freqCount2)) {  // iterate second obj for presence of freq obj 1 element squared
             return false;
         }
-        if(freqCount2[key ** 2] !== freqCount1[key]){  // check again for freq of element from first obj  one loop two conditionals  if you have 2(2) you must have 2(4)
+        if (freqCount2[key ** 2] !== freqCount1[key]) {  // check again for freq of element from first obj  one loop two conditionals  if you have 2(2) you must have 2(4)
             return false;
         }
     }
     return true;
 }
+
 console.log(sameTwo([1, 2, 3, 4], [1, 4, 9]));
 
+///anagram problem
+function validAnagram(strA, strB) {
+    if (strA.length !== strB.length) return false;
+    //split string so I can iterate through the array
+    let arrA = strA.split('')
+    let arrB = strB.split('')
+    //set up freq obj so we can compare counts of letters
+    let freqA = {}
+    let freqB = {}
+    for (const arrBElement of arrB) {
+        freqB[arrBElement] = (freqB[arrBElement] || 0) + 1
+    }
+    for (const arrAElement of arrA) {
+        freqA[arrAElement] = (freqA[arrAElement] || 0) + 1
+    }
+    for (let key in freqA) {
+        if (!(key in freqB)) {  // iterate second obj for presence of freq obj 1 element squared
+            return false;
+        }
+        if (freqB[key] !== freqA[key]) {  // check again for freq of element from first obj  one loop two conditionals  if you have 2(2) you must have 2(4)
+            return false;
+        }
+    }
+    return true;
+}
+
+console.log(validAnagram('trevor', 'revort'));
