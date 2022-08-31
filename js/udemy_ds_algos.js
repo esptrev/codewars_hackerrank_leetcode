@@ -344,3 +344,5 @@ function maxSubArrSlider(arr,num){
     }
     return maxSum;
 }
+
+///divide and conquer

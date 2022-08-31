@@ -254,3 +254,21 @@ var divide = function (dividend, divisor) {
 };
 
 console.log(divide(10,3));
+
+/// leetcode 869 reordered power of 2
+var reorderedPowerOf2 = function (n){
+    const normalize = (str) => {
+        return str.split('').sort().join('')
+    }
+
+  const maxValue = 10 ** 9;
+  let base = 1;
+  const powerOf2 = new Set();
+  while(base <= maxValue){
+        powerOf2.add(normalize(base.toString()))
+      base *= 2
+  }
+  return powerOf2.has(normalize(n.toString()))
+}
+
+console.log(reorderedPowerOf2(25));
