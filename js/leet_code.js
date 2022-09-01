@@ -272,3 +272,20 @@ var reorderedPowerOf2 = function (n){
 }
 
 console.log(reorderedPowerOf2(25));
+
+/// project euler #7 10001st prime number
+function findThePrime (int){
+
+}
+
+/// leetcode 11 container with most water
+var maxArea = function(height) {
+    let ans = 0
+    let i = 0
+    let j = height.length-1
+    while (i < j) {
+        ans = Math.max(ans, Math.min(height[i], height[j]) * (j - i))
+        height[i] <= height[j] ? i++ : j--
+    }
+    return ans
+};
